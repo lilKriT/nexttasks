@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] }); // this can also specify things like weight...
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,3 +24,4 @@ export default function RootLayout({
 // What can I do here?
 // import css, metadata and google fonts!
 // Export meta data and create RootLayout
+// TODO: import a different font
