@@ -2,5 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+}
+
+@layer components {
+}
+
+@layer utilities {
+  .container {
+  }
+}
+
 /* TODO: Check out prefers-color-scheme */
 /* TODO: Check out motion-reduce*/
