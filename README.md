@@ -85,7 +85,7 @@ Alternatively, you can use
 
 ## API
 
-Typical API function is placed in `/api/path/route.js`
+Typical API function is placed in `/api/pathname/route.js`
 
 ```js
 import { NextResponse } from "next/server";

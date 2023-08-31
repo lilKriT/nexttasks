@@ -10,7 +10,7 @@ const Header = () => {
 
         <menu className="flex gap-2">
           <li>
-            <Link href={"/"} className="navLink">
+            <Link href={"/about"} className="navLink">
               Cool
             </Link>
           </li>
@@ -20,7 +20,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link href={"/"} className="navLink">
+            <Link href={"/secrets"} className="navLink">
               Stylish
             </Link>
           </li>
