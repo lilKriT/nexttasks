@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import dbConnect from "@/lib/dbConnect";
-import Task from "@/models/Task";
 
 // Get Single Task
 export async function GET(
