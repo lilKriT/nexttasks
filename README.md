@@ -21,7 +21,7 @@ Created by lilKriT.
 - routes are document based: To make about page, create `about/page.tsx` file.
 - Router used `/pages` before. Now it's `/app`
 - `()` will ignore the directory in url path. `/app/(admin)/dashboard` will be accessed by `/app/dashboard`
-- Adding `--turbo` to dev script will use turbopack. **(only works with dev so far!)**
+- Adding `--turbo` to dev script will use turbopack.**experimental!** **(only works with dev so far!)**
 - I can create custom layouts for each page.
 - I can use next/link to link to other pages. No `<a>` required!
 - I can put metadata in layout, or in the page itself.

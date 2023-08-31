@@ -1,10 +1,20 @@
 // import Image from "next/image";
+import ITask from "@/src/interfaces/ITask";
+import Tasks from "./_components/Tasks";
 
-export default function Home() {
+const fetchTasks = async () => {
+  const res = await fetch(`http://localhost:3000/api/v1/tasks`);
+  const tasks = await res.json();
+  return tasks;
+};
+
+export default async function Home() {
+  const tasks: ITask[] = await fetchTasks();
   return (
-    <main className="">
-      <h1>Basic Next Project.</h1>
-    </main>
+    <div className="min-h-screen flex justify-center">
+      <h1 className="">Your tasks:</h1>
+      <Tasks params={{ tasks }} />
+    </div>
   );
 }
 
