@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 
 const LogIn = () => {
   return (
@@ -24,7 +23,7 @@ const LogIn = () => {
               placeholder="somethingverysecure123!"
             />
           </label>
-          <button className="btn btn--primary mt-4">Log In</button>
+          <button className="btn btn--primary mt-4 self-center">Log In</button>
           <p className="text-center">
             You don't have an account yet?{" "}
             <Link href={"/register"} className="link">
