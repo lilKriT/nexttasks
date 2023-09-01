@@ -8,7 +8,7 @@
   }
 
   html {
-    @apply bg-zinc-900 text-zinc-200;
+    @apply bg-zinc-900 text-zinc-100;
   }
 }
 
@@ -19,9 +19,10 @@
   }
 
   .navLink {
-    @apply flex px-4 py-2;
+    @apply relative flex px-4 py-2;
     @apply text-lg uppercase tracking-wider;
     @apply duration-150 ease-in-out hover:-translate-y-1;
+    @apply after:content-[""] after:duration-150 after:ease-in-out after:absolute after:h-0 hover:after:h-[2px] after:w-full after:bg-gradient-to-r after:from-primary after:to-secondary after:bottom-0 after:left-1/2 after:-translate-x-1/2;
   }
 
   .taskCard {
@@ -36,6 +37,10 @@
 @layer utilities {
   .container {
     @apply max-w-5xl;
+  }
+
+  .gradient {
+    @apply bg-clip-text font-bold text-transparent bg-gradient-to-br from-emerald-300 via-violet-400 to-emerald-400;
   }
 }
 

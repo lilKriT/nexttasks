@@ -12,8 +12,12 @@ export default async function Home() {
   const tasks: ITask[] = await fetchTasks();
   return (
     <div className="min-h-screen flex justify-center">
-      <h1 className="">Your tasks:</h1>
-      <Tasks params={{ tasks }} />
+      <div className="container">
+        <h1 className="text-5xl text-center tracking-wider">
+          Your <span className="gradient">tasks</span>:
+        </h1>
+        <Tasks params={{ tasks }} />
+      </div>
     </div>
   );
 }
