@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import ITask from "@/src/interfaces/ITask";
+import { AiFillDelete } from "react-icons/ai";
 
 const deleteTask = async (id: string) => {
   try {
@@ -16,7 +17,7 @@ const Task = ({ params: { task } }: { params: { task: ITask } }) => {
   const router = useRouter();
 
   return (
-    <li className="taskCard">
+    <div className="taskCard">
       <p>{task.title}</p>
       <div>
         <button
@@ -26,10 +27,10 @@ const Task = ({ params: { task } }: { params: { task: ITask } }) => {
           }}
           className="btn btn--small btn--danger"
         >
-          DEL
+          <AiFillDelete />
         </button>
       </div>
-    </li>
+    </div>
   );
 };
 

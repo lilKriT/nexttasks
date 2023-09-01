@@ -14,13 +14,13 @@ const TaskList = async () => {
   const tasks: ITask[] = await fetchTasks();
 
   return (
-    <div>
+    <div className="mt-8">
       {tasks.length === 0 ? (
         "You have no tasks yet."
       ) : (
         <ul className="flex flex-col gap-4">
           {tasks.map((task, idx) => (
-            <Task params={{ task }} />
+            <Task params={{ task }} key={idx} />
           ))}
         </ul>
       )}

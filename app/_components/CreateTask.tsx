@@ -34,6 +34,7 @@ const CreateTask = () => {
           required
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          autoFocus
         />
         <button className="btn btn--primary">Add</button>
       </form>

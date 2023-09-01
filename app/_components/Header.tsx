@@ -11,17 +11,13 @@ const Header = () => {
         <menu className="flex gap-2">
           <li>
             <Link href={"/about"} className="navLink">
-              Cool
+              About
             </Link>
           </li>
-          <li>
-            <Link href={"/"} className="navLink">
-              Awesome
-            </Link>
-          </li>
+
           <li>
             <Link href={"/secrets"} className="navLink">
-              Stylish
+              Secret?
             </Link>
           </li>
         </menu>
