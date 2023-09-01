@@ -1,9 +1,10 @@
 "use client";
 import { FormEvent, useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const CreateTask = () => {
   const [title, setTitle] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -22,6 +23,8 @@ const CreateTask = () => {
       console.log(error);
     }
     setTitle("");
+    console.log("refreshing");
+    router.refresh();
   };
 
   return (

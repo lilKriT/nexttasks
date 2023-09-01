@@ -5,12 +5,14 @@ import CreateTask from "./_components/CreateTask";
 
 const fetchTasks = async () => {
   const res = await fetch(`http://localhost:3000/api/v1/tasks`, {
-    next: {
-      revalidate: 10,
-    },
+    cache: "no-store", // this or next: revalidate?
   });
   const tasks = await res.json();
   return tasks;
+};
+
+const addTask = () => {
+  console.log("Adding task");
 };
 
 export default async function Home() {
