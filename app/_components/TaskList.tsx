@@ -1,15 +1,23 @@
-"use client";
 import ITask from "@/src/interfaces/ITask";
 import { useRouter } from "next/navigation";
 
-const Tasks = ({ params: { tasks } }: { params: { tasks: ITask[] } }) => {
-  const router = useRouter();
+const fetchTasks = async () => {
+  const res = await fetch(`http://localhost:3000/api/v1/tasks`, {
+    cache: "no-store", // this or next: revalidate?
+  });
+  const tasks = await res.json();
+  return tasks;
+};
+
+const TaskList = async () => {
+  const tasks: ITask[] = await fetchTasks();
+
   const deleteTask = async (id: string) => {
     try {
       await fetch(`http://localhost:3000/api/v1/tasks/${id}`, {
         method: "DELETE",
       });
-      router.refresh();
+      // router.refresh();
     } catch (error) {
       console.log(error);
     }
@@ -25,12 +33,7 @@ const Tasks = ({ params: { tasks } }: { params: { tasks: ITask[] } }) => {
             <li className="taskCard" key={idx}>
               <p>{task.title}</p>
               <div>
-                <button
-                  onClick={() => deleteTask(task._id)}
-                  className="btn btn--small btn--danger"
-                >
-                  DEL
-                </button>
+                <button className="btn btn--small btn--danger">DEL</button>
               </div>
             </li>
           ))}
@@ -40,4 +43,4 @@ const Tasks = ({ params: { tasks } }: { params: { tasks: ITask[] } }) => {
   );
 };
 
-export default Tasks;
+export default TaskList;
