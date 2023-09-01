@@ -3,13 +3,39 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    /* @apply outline outline-1 outline-red-400; */
+  }
+
+  html {
+    @apply bg-zinc-900 text-zinc-200;
+  }
 }
 
 @layer components {
+  .logo {
+    @apply px-4 py-2;
+    @apply duration-150 ease-in-out hover:scale-105;
+  }
+
+  .navLink {
+    @apply flex px-4 py-2;
+    @apply text-lg uppercase tracking-wider;
+    @apply duration-150 ease-in-out hover:-translate-y-1;
+  }
+
+  .taskCard {
+  }
+
+  .link {
+    @apply text-red-400 inline-flex;
+    @apply duration-150 hover:scale-105;
+  }
 }
 
 @layer utilities {
   .container {
+    @apply max-w-5xl;
   }
 }
 

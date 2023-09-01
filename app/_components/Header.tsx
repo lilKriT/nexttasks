@@ -2,8 +2,8 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="flex justify-center bg-gray-700">
-      <nav className="container flex justify-between">
+    <header className="flex justify-center">
+      <nav className="mt-6 mx-4 mb-2 container flex justify-between items-center">
         <Link href={"/"} className="logo">
           Logo
         </Link>
