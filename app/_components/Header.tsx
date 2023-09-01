@@ -20,6 +20,12 @@ const Header = () => {
               Secret?
             </Link>
           </li>
+
+          <li>
+            <Link href={"/login"} className="navLink">
+              Log In
+            </Link>
+          </li>
         </menu>
       </nav>
     </header>
