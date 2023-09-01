@@ -25,11 +25,32 @@
     @apply after:content-[""] after:duration-150 after:ease-in-out after:absolute after:h-0 hover:after:h-[2px] after:w-full after:bg-gradient-to-r after:from-primary after:to-secondary after:bottom-0 after:left-1/2 after:-translate-x-1/2;
   }
 
+  .btn {
+    @apply uppercase tracking-wider px-4 py-2 text-lg rounded-xl;
+    @apply duration-150 ease-in-out active:scale-95 hover:brightness-125;
+  }
+
+  .btn--primary {
+    @apply bg-primary;
+  }
+
+  .btn--secondary {
+    @apply bg-secondary;
+  }
+
   .taskCard {
   }
 
+  .form {
+    @apply bg-zinc-800 rounded-xl px-4 py-4;
+  }
+
+  .formInput {
+    @apply bg-transparent text-lg focus:outline-none border-primary border-b-2 caret-violet-400;
+  }
+
   .link {
-    @apply text-red-400 inline-flex;
+    @apply inline-flex bg-gradient-to-br from-emerald-300 via-violet-400 to-emerald-400 bg-clip-text text-transparent;
     @apply duration-150 hover:scale-105;
   }
 }

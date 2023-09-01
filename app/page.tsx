@@ -1,9 +1,14 @@
 // import Image from "next/image";
 import ITask from "@/src/interfaces/ITask";
 import Tasks from "./_components/Tasks";
+import CreateTask from "./_components/CreateTask";
 
 const fetchTasks = async () => {
-  const res = await fetch(`http://localhost:3000/api/v1/tasks`);
+  const res = await fetch(`http://localhost:3000/api/v1/tasks`, {
+    next: {
+      revalidate: 10,
+    },
+  });
   const tasks = await res.json();
   return tasks;
 };
@@ -17,6 +22,7 @@ export default async function Home() {
           Your <span className="gradient">tasks</span>:
         </h1>
         <Tasks params={{ tasks }} />
+        <CreateTask />
       </div>
     </div>
   );

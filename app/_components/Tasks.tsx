@@ -5,8 +5,8 @@ const Tasks = ({ params: { tasks } }: { params: { tasks: ITask[] } }) => {
     <div>
       {tasks.length === 0
         ? "You have no tasks yet."
-        : tasks.map((task) => (
-            <div>
+        : tasks.map((task, idx) => (
+            <div className="taskCard" key={idx}>
               {task.title} - {task.completed ? "done" : "not done"}
             </div>
           ))}
