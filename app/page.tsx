@@ -1,4 +1,3 @@
-import ITask from "@/src/interfaces/ITask";
 import TaskList from "./_components/TaskList";
 import CreateTask from "./_components/CreateTask";
 
@@ -16,6 +15,5 @@ export default async function Home() {
   );
 }
 
-// import Image from "next/image"
 // TODO: check out a: rel= noopener noreferrer
 // TODO: check out making arrow with -&gt;
