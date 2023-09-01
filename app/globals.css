@@ -38,7 +38,17 @@
     @apply bg-secondary;
   }
 
+  .btn--danger {
+    @apply bg-red-500;
+  }
+
+  .btn--small {
+    @apply text-sm p-1 rounded-sm;
+  }
+
   .taskCard {
+    @apply flex justify-between items-center px-4 py-2 rounded-xl outline outline-violet-400/30;
+    @apply duration-150 ease-in-out hover:outline-violet-400;
   }
 
   .form {

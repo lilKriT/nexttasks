@@ -1,4 +1,3 @@
-// import Image from "next/image";
 import ITask from "@/src/interfaces/ITask";
 import Tasks from "./_components/Tasks";
 import CreateTask from "./_components/CreateTask";
@@ -9,10 +8,6 @@ const fetchTasks = async () => {
   });
   const tasks = await res.json();
   return tasks;
-};
-
-const addTask = () => {
-  console.log("Adding task");
 };
 
 export default async function Home() {
