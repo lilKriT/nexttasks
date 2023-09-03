@@ -3,12 +3,14 @@ import Task from "./Task";
 
 const fetchTasks = async () => {
   try {
-    const res = await fetch(`http://127.0.0.1:3000/api/v1/tasks`, {cache: "no-store"});
+    const res = await fetch(`http://127.0.0.1:3000/api/v1/tasks`, {
+      cache: "no-store",
+    });
     // Seems like both localhost and 127.0.0.1 work fine.
     const tasks = await res.json();
-    return tasks;    
+    return tasks;
   } catch (error) {
-    return []
+    return [];
   }
 };
 
@@ -21,8 +23,8 @@ const TaskList = async () => {
         "You have no tasks yet."
       ) : (
         <ul className="flex flex-col gap-4">
-          {tasks.map((task, idx) => (
-            <Task params={{ task }} key={idx} />
+          {tasks.map((task) => (
+            <Task params={{ task }} key={task._id} />
           ))}
         </ul>
       )}
