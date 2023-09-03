@@ -10,19 +10,20 @@ const Header = () => {
 
         <menu className="flex gap-2">
           <li>
-            <Link href={"/about"} className="navLink">
+            {/* Prefetch only works in production! */}
+            <Link href={"/about"} className="navLink" prefetch>
               About
             </Link>
           </li>
 
           <li>
-            <Link href={"/secrets"} className="navLink">
+            <Link href={"/secrets"} className="navLink" prefetch>
               Secret?
             </Link>
           </li>
 
           <li>
-            <Link href={"/login"} className="navLink">
+            <Link href={"/login"} className="navLink" prefetch>
               Log In
             </Link>
           </li>
