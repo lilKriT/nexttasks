@@ -12,7 +12,7 @@ const Footer = () => {
           <Link href={"/"} className="link">
             lilKriT
           </Link>{" "}
-          around 2023 or whatever I don't have a calendar.
+          around 2023 or whatever I don&apos;t have a calendar.
         </p>
       </div>
     </footer>

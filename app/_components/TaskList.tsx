@@ -1,13 +1,17 @@
 import ITask from "@/src/interfaces/ITask";
 import { useRouter } from "next/navigation";
 import Task from "./Task";
+import { cache } from "react";
 
 const fetchTasks = async () => {
-  const res = await fetch(`http://localhost:3000/api/v1/tasks`, {
-    cache: "no-store", // this or next: revalidate?
-  });
-  const tasks = await res.json();
-  return tasks;
+  try {
+    const res = await fetch(`http://127.0.0.1:3000/api/v1/tasks`, {cache: "no-store"});
+    // Seems like both localhost and 127.0.0.1 work fine.
+    const tasks = await res.json();
+    return tasks;    
+  } catch (error) {
+    return []
+  }
 };
 
 const TaskList = async () => {

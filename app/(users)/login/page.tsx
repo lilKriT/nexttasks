@@ -25,7 +25,7 @@ const LogIn = () => {
           </label>
           <button className="btn btn--primary mt-4 self-center">Log In</button>
           <p className="text-center">
-            You don't have an account yet?{" "}
+            You don&apos;t have an account yet?{" "}
             <Link href={"/register"} className="link">
               Create an account!
             </Link>

@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 async function createTask(title: string) {
-  await fetch("http://localhost:3000/api/v1/tasks", {
+  await fetch(`http://localhost:3000/api/v1/tasks`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
