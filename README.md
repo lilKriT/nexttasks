@@ -25,6 +25,9 @@ Created by lilKriT.
 - I can create custom layouts for each page.
 - I can use next/link to link to other pages. No `<a>` required!
 - I can put metadata in layout, or in the page itself.
+- **Metadata** static goes in metadata object in page / layout. Dynamic is in `generateMetadata` function
+- next/image - you must specify url, alt, width and height. If you don't know w/h, use `fill`
+- If you want to add external images go to `next.config` and add `remotePatterns` or `images/domains` (less secure)
 - I can import google fonts.
 - I can put components anywhere in the app folder. (but it's good to organize them)
 - [Server components vs Client components](#server-components-vs-client-components)
