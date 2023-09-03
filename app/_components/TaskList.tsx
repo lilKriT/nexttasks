@@ -1,7 +1,5 @@
 import ITask from "@/src/interfaces/ITask";
-import { useRouter } from "next/navigation";
 import Task from "./Task";
-import { cache } from "react";
 
 const fetchTasks = async () => {
   try {
