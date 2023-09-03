@@ -64,6 +64,7 @@ const Task = ({ params: { task } }: { params: { task: ITask } }) => {
           className="formInput grow"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          autoFocus
         />
       )}
       {/* Buttons div */}
@@ -80,7 +81,9 @@ const Task = ({ params: { task } }: { params: { task: ITask } }) => {
               }}
             />
             <button
-              onClick={() => setEditing(true)}
+              onClick={() => {
+                setEditing(true);
+              }}
               className="btn btn--small btn--primary"
             >
               <AiFillEdit />

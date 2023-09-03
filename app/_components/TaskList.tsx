@@ -7,6 +7,12 @@ const fetchTasks = async () => {
       cache: "no-store",
     });
     // Seems like both localhost and 127.0.0.1 work fine.
+
+    const slowdown = false;
+    if (slowdown) {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+    }
+
     const tasks = await res.json();
     return tasks;
   } catch (error) {

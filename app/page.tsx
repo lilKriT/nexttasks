@@ -1,5 +1,6 @@
 import TaskList from "./_components/TaskList";
 import CreateTask from "./_components/CreateTask";
+import { Suspense } from "react";
 
 export default async function Home() {
   return (
@@ -8,7 +9,9 @@ export default async function Home() {
         <h1 className="text-5xl text-center tracking-wider">
           Your <span className="gradient">tasks</span>:
         </h1>
-        <TaskList />
+        <Suspense fallback={<div>Loading tasks...</div>}>
+          <TaskList />
+        </Suspense>
         <CreateTask />
       </div>
     </div>
