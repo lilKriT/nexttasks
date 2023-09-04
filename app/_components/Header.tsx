@@ -38,7 +38,7 @@ const Header = () => {
           {/* TODO: Possibly move logout logic to a separate component? */}
           <li>
             {!context.user ? (
-              <Link href={"/login"} className="navLink" prefetch>
+              <Link href={"/login"} className="btn btn--primary" prefetch>
                 Log In
               </Link>
             ) : (
@@ -47,7 +47,7 @@ const Header = () => {
                   await logoutUser();
                   context.setUser(null);
                 }}
-                className="navLink"
+                className="btn btn--primary"
               >{`Log out`}</button>
             )}
           </li>

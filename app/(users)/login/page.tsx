@@ -22,11 +22,11 @@ const loginUser = async (
       return null;
     } else {
       const data = (await res.json()) as IUser;
-      console.log("data: ", data);
+      // console.log("data: ", data);
       return data;
     }
   } catch (error) {
-    console.log("Something wrong");
+    console.log(error);
   }
 };
 
@@ -40,8 +40,6 @@ const LogIn = () => {
   return (
     <div className="min-h-screen flex justify-center">
       <div className="container flex justify-center items-start">
-        <p>{context.user ? context.user.login : "No  user"}</p>
-        <p>{context.test}</p>
         <form
           onSubmit={async (e) => {
             const user = await loginUser(e, { login, password });

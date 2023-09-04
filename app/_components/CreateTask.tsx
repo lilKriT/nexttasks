@@ -21,7 +21,6 @@ const CreateTask = () => {
 
   return (
     <div className="flex justify-center">
-      <p>{context.user ? context.user.login : "No user yet"}</p>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
