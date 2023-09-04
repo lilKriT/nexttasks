@@ -1,5 +1,25 @@
 import Link from "next/link";
 
+const loginUser = async (
+  e: React.FormEvent,
+  { login, password }: { login: string; password: string }
+) => {
+  e.preventDefault();
+  try {
+    const res = await fetch(`http://localhost:3000/api/v1/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ login, password }),
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const LogIn = () => {
   return (
     <div className="min-h-screen flex justify-center">
