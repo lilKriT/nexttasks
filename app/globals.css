@@ -60,7 +60,7 @@
   }
 
   .formInput {
-    @apply bg-transparent text-lg focus:outline-none border-primary border-b-2 caret-violet-400;
+    @apply bg-transparent text-lg focus:outline-none border-primary border-b-2 p-2 caret-violet-400;
   }
 
   .link {

@@ -23,7 +23,7 @@ const Register = () => {
               placeholder="somethingverysecure123!"
             />
           </label>
-          <label className="formLabel">
+          {/* <label className="formLabel">
             Code:
             <br />
             <input
@@ -31,7 +31,7 @@ const Register = () => {
               className="formInput w-full mt-2"
               placeholder="123 maybe?"
             />
-          </label>
+          </label> */}
           <button className="btn btn--primary mt-4 self-center">
             Register
           </button>
