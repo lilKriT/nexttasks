@@ -4,7 +4,6 @@ import dbConnect from "@/lib/dbConnect";
 import User from "@/models/User";
 import generateToken from "@/src/util/generateToken";
 
-// TODO: a lot of error checking
 // Create a new user:
 export async function POST(request: NextRequest) {
   await dbConnect();

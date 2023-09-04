@@ -1,4 +1,4 @@
-import ITask from "@/src/interfaces/ITask";
+import ITask from "@/src/types/ITask";
 import Task from "./Task";
 
 const fetchTasks = async () => {

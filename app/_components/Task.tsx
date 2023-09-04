@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import ITask from "@/src/interfaces/ITask";
+import ITask from "@/src/types/ITask";
 import {
   AiFillDelete,
   AiFillEdit,
@@ -89,8 +89,8 @@ const Task = ({ params: { task } }: { params: { task: ITask } }) => {
               <AiFillEdit />
             </button>
             <button
-              onClick={() => {
-                deleteTask(task._id);
+              onClick={async () => {
+                await deleteTask(task._id);
                 router.refresh();
               }}
               className="btn btn--small btn--danger"

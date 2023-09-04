@@ -1,12 +1,13 @@
 "use client";
+import { AuthProvider } from "@/src/context/provider";
+import IUser from "@/src/types/IUser";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 const loginUser = async (
   e: React.FormEvent,
   { login, password }: { login: string; password: string }
 ) => {
-  console.log("start");
   e.preventDefault();
   try {
     const res = await fetch(`http://localhost:3000/api/v1/users/login`, {
@@ -16,11 +17,15 @@ const loginUser = async (
       },
       body: JSON.stringify({ login, password }),
     });
-    const data = await res.json();
-    console.log(data);
-    return data;
+    if (!res.ok) {
+      return null;
+    } else {
+      const data = (await res.json()) as IUser;
+      console.log(data);
+      return data;
+    }
   } catch (error) {
-    console.log(error);
+    console.log("Something wrong");
   }
 };
 
@@ -28,11 +33,18 @@ const LogIn = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
+  const context = useContext(AuthProvider);
+
   return (
     <div className="min-h-screen flex justify-center">
       <div className="container flex justify-center items-start">
         <form
-          onSubmit={(e) => loginUser(e, { login, password })}
+          onSubmit={async (e) => {
+            const user = await loginUser(e, { login, password });
+            if (user) {
+              context.user = user;
+            }
+          }}
           className="form my-8 py-8 flex flex-col gap-4 w-full max-w-2xl"
         >
           <label className="formLabel">

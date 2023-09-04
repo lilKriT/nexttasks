@@ -1,6 +1,7 @@
 "use client";
+import { AuthProvider } from "@/src/context/provider";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 async function createTask(title: string) {
   await fetch(`http://localhost:3000/api/v1/tasks`, {
@@ -16,8 +17,11 @@ const CreateTask = () => {
   const [title, setTitle] = useState("");
   const router = useRouter();
 
+  const context = useContext(AuthProvider);
+
   return (
     <div className="flex justify-center">
+      <p>{context.user ? context.user.login : "No user yet"}</p>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
