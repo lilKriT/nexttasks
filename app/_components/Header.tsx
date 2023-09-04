@@ -3,9 +3,18 @@ import { AuthProvider } from "@/src/context/provider";
 import Link from "next/link";
 import { useContext } from "react";
 
+const logoutUser = async () => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/v1/users/logout`);
+    const data = await res;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const Header = () => {
   const context = useContext(AuthProvider);
-  console.log("drawing header");
 
   return (
     <header className="flex justify-center">
@@ -21,20 +30,25 @@ const Header = () => {
               About
             </Link>
           </li>
-
           <li>
             <Link href={"/secrets"} className="navLink" prefetch>
               Secret?
             </Link>
           </li>
-
+          {/* TODO: Possibly move logout logic to a separate component? */}
           <li>
             {!context.user ? (
               <Link href={"/login"} className="navLink" prefetch>
                 Log In
               </Link>
             ) : (
-              <button className="navLink">{`Log out`}</button>
+              <button
+                onClick={async () => {
+                  await logoutUser();
+                  context.setUser(null);
+                }}
+                className="navLink"
+              >{`Log out`}</button>
             )}
           </li>
         </menu>

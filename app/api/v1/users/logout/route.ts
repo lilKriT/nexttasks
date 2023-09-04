@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
-  request.cookies.clear(); // TODO: make sure this only deletes some cookies, like auth
-  return NextResponse.json({ msg: "User logged out." });
+  const response = NextResponse.json({ msg: "User logged out." });
+  response.cookies.delete("auth");
+  return response;
 }

@@ -42,6 +42,7 @@ const Register = () => {
               placeholder="John"
               value={login}
               onChange={(e) => setLogin(e.target.value)}
+              autoFocus
             />
           </label>
           <label className="formLabel">
