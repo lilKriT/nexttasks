@@ -1,6 +1,12 @@
+"use client"; // Maybe move this to just log in / out buttons?
+import { AuthProvider } from "@/src/context/provider";
 import Link from "next/link";
+import { useContext } from "react";
 
 const Header = () => {
+  const context = useContext(AuthProvider);
+  console.log("drawing header");
+
   return (
     <header className="flex justify-center">
       <nav className="mt-6 mx-4 mb-2 container flex justify-between items-center">
@@ -23,9 +29,13 @@ const Header = () => {
           </li>
 
           <li>
-            <Link href={"/login"} className="navLink" prefetch>
-              Log In
-            </Link>
+            {!context.user ? (
+              <Link href={"/login"} className="navLink" prefetch>
+                Log In
+              </Link>
+            ) : (
+              <button className="navLink">{`Log out`}</button>
+            )}
           </li>
         </menu>
       </nav>

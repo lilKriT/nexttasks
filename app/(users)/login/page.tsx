@@ -2,6 +2,7 @@
 import { AuthProvider } from "@/src/context/provider";
 import IUser from "@/src/types/IUser";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 
 const loginUser = async (
@@ -21,7 +22,7 @@ const loginUser = async (
       return null;
     } else {
       const data = (await res.json()) as IUser;
-      console.log(data);
+      console.log("data: ", data);
       return data;
     }
   } catch (error) {
@@ -34,16 +35,20 @@ const LogIn = () => {
   const [password, setPassword] = useState("");
 
   const context = useContext(AuthProvider);
+  const router = useRouter();
 
   return (
     <div className="min-h-screen flex justify-center">
       <div className="container flex justify-center items-start">
+        <p>{context.user ? context.user.login : "No  user"}</p>
+        <p>{context.test}</p>
         <form
           onSubmit={async (e) => {
             const user = await loginUser(e, { login, password });
             if (user) {
-              context.user = user;
+              context.setUser(user);
             }
+            // router.refresh();
           }}
           className="form my-8 py-8 flex flex-col gap-4 w-full max-w-2xl"
         >
