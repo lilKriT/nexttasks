@@ -1,6 +1,8 @@
 "use client";
+import { AuthProvider } from "@/src/context/provider";
+import IUser from "@/src/types/IUser";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 const registerUser = async (
   e: React.FormEvent,
@@ -15,8 +17,13 @@ const registerUser = async (
       },
       body: JSON.stringify({ login, password }),
     });
-    const data = await res.json();
-    console.log(data);
+    if (!res.ok) {
+      return null;
+    } else {
+      const data = (await res.json()) as IUser;
+      // console.log("data: ", data);
+      return data;
+    }
   } catch (error) {
     console.log(error);
   }
@@ -26,11 +33,18 @@ const Register = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
+  const context = useContext(AuthProvider);
+
   return (
     <div className="min-h-screen flex justify-center">
       <div className="container flex justify-center items-start">
         <form
-          onSubmit={(e) => registerUser(e, { login, password })}
+          onSubmit={async (e) => {
+            const user = await registerUser(e, { login, password });
+            if (user) {
+              context.setUser(user);
+            }
+          }}
           className="form my-8 py-8 flex flex-col gap-4 w-full max-w-2xl"
         >
           <label className="formLabel">

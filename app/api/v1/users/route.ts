@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     });
     response.cookies.set({
       name: "auth",
-      value: generateToken(user._id),
+      value: await generateToken(user._id),
       httpOnly: true,
       path: "/",
     });

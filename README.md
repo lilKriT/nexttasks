@@ -16,6 +16,8 @@ This is my first attempt at a real Next 13 project. It will be a simple Task lis
 
 Created by lilKriT.
 
+[Useful Links](#links)
+
 # What I learned so far
 
 - routes are document based: To make about page, create `about/page.tsx` file.
@@ -230,3 +232,7 @@ export default function Likes({likeCount, id} : {any}){
     )
 }
 ```
+
+# Links
+
+[https://blog.finiam.com/blog/authenticating-things-with-cookies-on-next-js](https://blog.finiam.com/blog/authenticating-things-with-cookies-on-next-js)
