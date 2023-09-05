@@ -2,8 +2,8 @@
 import { AuthProvider } from "@/src/context/provider";
 import IUser from "@/src/types/IUser";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useContext, useState } from "react";
+import { redirect, useRouter } from "next/navigation";
+import { Suspense, useContext, useEffect, useState } from "react";
 
 const loginUser = async (
   e: React.FormEvent,
@@ -37,50 +37,64 @@ const LogIn = () => {
   const context = useContext(AuthProvider);
   const router = useRouter();
 
+  if (!!context.user) {
+    console.log("Logged in");
+    // redirect("/", RedirectType.replace);
+    router.push("/");
+  }
+
+  // useEffect(() => {
+  //   router.push("/");
+  // }, []);
+
   return (
     <div className="min-h-screen flex justify-center">
       <div className="container flex justify-center items-start">
-        <form
-          onSubmit={async (e) => {
-            const user = await loginUser(e, { login, password });
-            if (user) {
-              context.setUser(user);
-            }
-            // router.refresh();
-          }}
-          className="form my-8 py-8 flex flex-col gap-4 w-full max-w-2xl"
-        >
-          <label className="formLabel">
-            Username:
-            <br />
-            <input
-              type="text"
-              className="formInput w-full mt-2"
-              placeholder="John"
-              value={login}
-              onChange={(e) => setLogin(e.target.value)}
-              autoFocus
-            />
-          </label>
-          <label className="formLabel">
-            Password:
-            <br />
-            <input
-              type="password"
-              className="formInput w-full mt-2"
-              placeholder="somethingverysecure123!"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-          <button className="btn btn--primary mt-4 self-center">Log In</button>
-          <p className="text-center">
-            You don&apos;t have an account yet?{" "}
-            <Link href={"/register"} className="link">
-              Create an account!
-            </Link>
-          </p>
-        </form>
+        <Suspense fallback={"bla"}>
+          <form
+            onSubmit={async (e) => {
+              const user = await loginUser(e, { login, password });
+              if (user) {
+                context.setUser(user);
+              }
+              // router.push("/"); // this is ok but it still lets you go to login page
+            }}
+            className="form my-8 py-8 flex flex-col gap-4 w-full max-w-2xl"
+          >
+            <label className="formLabel">
+              Username:
+              <br />
+              <input
+                type="text"
+                className="formInput w-full mt-2"
+                placeholder="John"
+                value={login}
+                onChange={(e) => setLogin(e.target.value)}
+                autoFocus
+              />
+            </label>
+            <label className="formLabel">
+              Password:
+              <br />
+              <input
+                type="password"
+                className="formInput w-full mt-2"
+                placeholder="somethingverysecure123!"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+            <button className="btn btn--primary mt-4 self-center">
+              Log In
+            </button>
+            <p className="text-center">
+              You don&apos;t have an account yet?{" "}
+              <Link href={"/register"} className="link">
+                Create an account!
+              </Link>
+            </p>
+          </form>
+        </Suspense>
       </div>
     </div>
   );

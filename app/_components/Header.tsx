@@ -35,6 +35,16 @@ const Header = () => {
               Secret?
             </Link>
           </li>
+          <li>
+            <Link href={"/flash"} className="btn btn--primary" prefetch>
+              Flash
+            </Link>
+          </li>
+          <li>
+            <Link href={"/flashserver"} className="btn btn--primary" prefetch>
+              server
+            </Link>
+          </li>
           {/* TODO: Possibly move logout logic to a separate component? */}
           <li>
             {!context.user ? (
