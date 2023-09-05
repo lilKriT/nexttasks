@@ -23,6 +23,8 @@ const Header = () => {
           Logo
         </Link>
 
+        {context.user && `Hello, ${context.user.login}`}
+
         <menu className="flex gap-2">
           <li>
             {/* Prefetch only works in production! */}

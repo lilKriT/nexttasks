@@ -4,9 +4,9 @@ This is my first attempt at a real Next 13 project. It will be a simple Task lis
 
 ## Goals
 
-- [] Create a working page
-- [] Create backend with CRUD for tasks
-- [] Add a Front End for the tasks
+- [x] Create a working page
+- [x] Create backend with CRUD for tasks
+- [x] Add a Front End for the tasks
 - [] Deploy
 - [] Make unique description and title per page
 
