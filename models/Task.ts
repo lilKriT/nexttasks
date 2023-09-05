@@ -10,6 +10,15 @@ const TaskSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    public: {
+      type: Boolean,
+      default: false,
+    },
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: [true, "Please provide an author."],
+    },
   },
   {
     timestamps: true,

@@ -20,22 +20,29 @@ const fetchTasks = async () => {
   }
 };
 
-const TaskList = async () => {
+const PublicTaskList = async () => {
   const tasks: ITask[] = await fetchTasks();
 
   return (
     <div className="mt-8">
       {tasks.length === 0 ? (
-        "You have no tasks yet."
+        <h1 className="text-5xl text-center tracking-wider">
+          No one has shared their tasks yet.
+        </h1>
       ) : (
-        <ul className="flex flex-col gap-4">
-          {tasks.map((task) => (
-            <Task params={{ task }} key={task._id} />
-          ))}
-        </ul>
+        <>
+          <h1 className="text-5xl text-center tracking-wider">
+            Shared <span className="gradient">tasks</span>:
+          </h1>
+          <ul className="flex flex-col gap-4 mt-8">
+            {tasks.map((task) => (
+              <Task params={{ task }} key={task._id} />
+            ))}
+          </ul>
+        </>
       )}
     </div>
   );
 };
 
-export default TaskList;
+export default PublicTaskList;

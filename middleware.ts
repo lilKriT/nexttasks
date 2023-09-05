@@ -15,9 +15,9 @@ export function middleware(request: NextRequest) {
   }
 
   // Auth part
-  if (checkAuth(request)) {
-    console.log("Just did auth check");
-  }
+  // if (checkAuth(request)) {
+  //   console.log("Just did auth check");
+  // }
 
   // console.log("Using middleware.");
   return NextResponse.next();

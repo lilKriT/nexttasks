@@ -28,25 +28,17 @@ const Header = () => {
         <menu className="flex gap-2">
           <li>
             {/* Prefetch only works in production! */}
+            <Link href={"/profile"} className="navLink" prefetch>
+              Profile
+            </Link>
+          </li>
+          <li>
+            {/* Prefetch only works in production! */}
             <Link href={"/about"} className="navLink" prefetch>
               About
             </Link>
           </li>
-          <li>
-            <Link href={"/secrets"} className="navLink" prefetch>
-              Secret?
-            </Link>
-          </li>
-          <li>
-            <Link href={"/flash"} className="btn btn--primary" prefetch>
-              Flash
-            </Link>
-          </li>
-          <li>
-            <Link href={"/flashserver"} className="btn btn--primary" prefetch>
-              server
-            </Link>
-          </li>
+
           {/* TODO: Possibly move logout logic to a separate component? */}
           <li>
             {!context.user ? (
