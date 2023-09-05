@@ -2,7 +2,7 @@
 import { AuthProvider } from "@/src/context/provider";
 import IUser from "@/src/types/IUser";
 import Link from "next/link";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Suspense, useContext, useEffect, useState } from "react";
 
 const loginUser = async (
@@ -37,16 +37,6 @@ const LogIn = () => {
   const context = useContext(AuthProvider);
   const router = useRouter();
 
-  if (!!context.user) {
-    console.log("Logged in");
-    // redirect("/", RedirectType.replace);
-    router.push("/");
-  }
-
-  // useEffect(() => {
-  //   router.push("/");
-  // }, []);
-
   return (
     <div className="min-h-screen flex justify-center">
       <div className="container flex justify-center items-start">
@@ -57,7 +47,7 @@ const LogIn = () => {
               if (user) {
                 context.setUser(user);
               }
-              // router.push("/"); // this is ok but it still lets you go to login page
+              router.push("/"); // this is ok but it still lets you go to login page
             }}
             className="form my-8 py-8 flex flex-col gap-4 w-full max-w-2xl"
           >

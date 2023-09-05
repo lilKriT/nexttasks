@@ -21,26 +21,32 @@ const CreateTask = () => {
 
   return (
     <div className="flex justify-center">
-      <form
-        onSubmit={async (e) => {
-          e.preventDefault();
-          await createTask(title);
-          setTitle("");
-          router.refresh();
-        }}
-        className="form mt-8 flex gap-4 w-full max-w-2xl"
-      >
-        <input
-          type="text"
-          className="formInput grow"
-          placeholder="Be awesome"
-          required
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          autoFocus
-        />
-        <button className="btn btn--primary">Add</button>
-      </form>
+      {context.user ? (
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            await createTask(title);
+            setTitle("");
+            router.refresh();
+          }}
+          className="form mt-8 flex gap-4 w-full max-w-2xl"
+        >
+          <input
+            type="text"
+            className="formInput grow"
+            placeholder="Be awesome"
+            required
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            autoFocus
+          />
+          <button className="btn btn--primary">Add</button>
+        </form>
+      ) : (
+        <div>
+          <h2>Log in to be able to add tasks.</h2>
+        </div>
+      )}
     </div>
   );
 };

@@ -2,6 +2,7 @@
 import { AuthProvider } from "@/src/context/provider";
 import IUser from "@/src/types/IUser";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 
 const registerUser = async (
@@ -33,6 +34,7 @@ const Register = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
+  const router = useRouter();
   const context = useContext(AuthProvider);
 
   return (
@@ -44,6 +46,7 @@ const Register = () => {
             if (user) {
               context.setUser(user);
             }
+            router.push("/"); // this is ok but it still lets you go to login page
           }}
           className="form my-8 py-8 flex flex-col gap-4 w-full max-w-2xl"
         >

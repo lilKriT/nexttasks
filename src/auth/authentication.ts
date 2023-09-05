@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
-import User from "@/models/User";
-import dbConnect from "@/lib/dbConnect";
 
 const getUserID = async (authCookie: RequestCookie) => {
   const decoded = await jwtVerify(
@@ -13,7 +11,6 @@ const getUserID = async (authCookie: RequestCookie) => {
 };
 
 const isLoggedIn = async (request: NextRequest) => {
-  await dbConnect();
   const token = request.cookies.get("auth");
 
   if (!token) {

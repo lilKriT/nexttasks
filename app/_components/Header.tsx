@@ -1,6 +1,7 @@
 "use client"; // Maybe move this to just log in / out buttons?
 import { AuthProvider } from "@/src/context/provider";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useContext } from "react";
 
 const logoutUser = async () => {
@@ -15,6 +16,7 @@ const logoutUser = async () => {
 
 const Header = () => {
   const context = useContext(AuthProvider);
+  const router = useRouter();
 
   return (
     <header className="flex justify-center">
@@ -26,12 +28,14 @@ const Header = () => {
         {context.user && `Hello, ${context.user.login}`}
 
         <menu className="flex gap-2">
-          <li>
-            {/* Prefetch only works in production! */}
-            <Link href={"/profile"} className="navLink" prefetch>
-              Profile
-            </Link>
-          </li>
+          {!!context.user && (
+            <li>
+              {/* Prefetch only works in production! */}
+              <Link href={"/profile"} className="navLink" prefetch>
+                Profile
+              </Link>
+            </li>
+          )}
           <li>
             {/* Prefetch only works in production! */}
             <Link href={"/about"} className="navLink" prefetch>
@@ -50,6 +54,7 @@ const Header = () => {
                 onClick={async () => {
                   await logoutUser();
                   context.setUser(null);
+                  router.push("/");
                 }}
                 className="btn btn--primary"
               >{`Log out`}</button>
