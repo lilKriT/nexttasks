@@ -5,6 +5,7 @@ import User from "@/models/User";
 import generateToken from "@/src/util/generateToken";
 
 export async function POST(request: NextRequest) {
+  await dbConnect();
   const { login, password } = await request.json();
 
   const user = await User.findOne({ login });
@@ -19,7 +20,7 @@ export async function POST(request: NextRequest) {
     const response = NextResponse.json({ id: user._id, login: user.login });
     response.cookies.set({
       name: "auth",
-      value: generateToken(user._id),
+      value: await generateToken(user._id),
       httpOnly: true,
       path: "/",
     });

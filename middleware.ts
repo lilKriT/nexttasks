@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import checkAuth from "./src/auth/checkAuth";
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith("/about")) {
     console.log("Going to about");
   }
@@ -15,9 +15,9 @@ export function middleware(request: NextRequest) {
   }
 
   // Auth part
-  // if (checkAuth(request)) {
-  //   console.log("Just did auth check");
-  // }
+  if (await checkAuth(request)) {
+    console.log("Just did auth check");
+  }
 
   // console.log("Using middleware.");
   return NextResponse.next();
