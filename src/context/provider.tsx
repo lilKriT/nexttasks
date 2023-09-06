@@ -14,10 +14,15 @@ export const AuthProvider = createContext<{
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<IUser | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Attempting to get user from local storage
   useEffect(() => {
+    setIsLoading(true);
     setUser(JSON.parse(localStorage.getItem("user") || "null"));
+
+    setIsLoading(false);
+    console.log("Loaded");
   }, []);
 
   // Saving user in local storage
@@ -31,7 +36,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <AuthProvider.Provider value={{ user, setUser }}>
-      {children}
+      {!isLoading ? children : ""}
+      {/* {children} */}
     </AuthProvider.Provider>
   );
 }
