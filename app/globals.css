@@ -59,6 +59,10 @@
     @apply text-xl;
   }
 
+  .formCheck {
+    @apply appearance-none h-6 aspect-square border-2 border-violet-500 cursor-pointer hover:border-violet-300 checked:bg-violet-500 duration-150 ease-in-out;
+  }
+
   .formInput {
     @apply bg-transparent text-lg focus:outline-none border-primary border-b-2 p-2 caret-violet-400;
   }

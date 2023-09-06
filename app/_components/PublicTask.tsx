@@ -97,7 +97,7 @@ const PublicTask = ({ params: { task } }: { params: { task: ITask } }) => {
               <>
                 <input
                   type="checkbox"
-                  className="appearance-none h-6 aspect-square border-2 border-violet-500 cursor-pointer hover:border-violet-300 checked:bg-violet-500 duration-150 ease-in-out"
+                  className="formCheck"
                   defaultChecked={task.completed}
                   onChange={(e) => {
                     checkTask(task._id, e.target.checked);

@@ -1,9 +1,9 @@
 import ITask from "@/src/types/ITask";
 import PublicTask from "./PublicTask";
 
-const fetchTasks = async () => {
+const fetchPublicTasks = async () => {
   try {
-    const res = await fetch(`http://127.0.0.1:3000/api/v1/tasks`, {
+    const res = await fetch(`http://127.0.0.1:3000/api/v1/tasks/public`, {
       cache: "no-store",
     });
     // Seems like both localhost and 127.0.0.1 work fine.
@@ -21,7 +21,7 @@ const fetchTasks = async () => {
 };
 
 const PublicTaskList = async () => {
-  const tasks: ITask[] = await fetchTasks();
+  const tasks: ITask[] = await fetchPublicTasks();
 
   return (
     <div className="mt-8">

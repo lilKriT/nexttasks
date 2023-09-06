@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     response.cookies.set({
       name: "auth",
       value: await generateToken(user._id),
-      httpOnly: true,
+      httpOnly: false,
       path: "/",
     });
 

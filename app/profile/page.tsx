@@ -5,7 +5,7 @@ const Profile = () => {
     <div className="min-h-screen flex justify-center">
       <div className="container">
         <h1>This is a personal page.</h1>
-        {/* <PrivateTaskList /> */}
+        <PrivateTaskList />
       </div>
     </div>
   );

@@ -1,10 +1,16 @@
 import ITask from "@/src/types/ITask";
 import PublicTask from "./PublicTask";
+import { cookies } from "next/headers";
 
-const fetchTasks = async () => {
+const fetchPrivateTasks = async () => {
   try {
     const res = await fetch(`http://localhost:3000/api/v1/tasks`, {
+      method: "GET",
       cache: "no-cache",
+      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${cookies().get("auth")?.value}`,
+      },
     });
 
     const tasks = await res.json();
@@ -15,7 +21,7 @@ const fetchTasks = async () => {
 };
 
 const PrivateTaskList = async () => {
-  const tasks: ITask[] = await fetchTasks();
+  const tasks: ITask[] = await fetchPrivateTasks();
 
   return (
     <div className="mt-8">
