@@ -12,6 +12,7 @@ const About = () => {
         <p>This is a website dedicated to an exercise made by me.</p>
         <p>Thank you for reading.</p>
 
+        {/* TODO: make this use state */}
         {cookieStore.get("auth") && (
           <div>
             <h2>PS. Did you know that penguins are awesome?</h2>

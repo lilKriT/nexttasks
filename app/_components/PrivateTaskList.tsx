@@ -1,10 +1,10 @@
 import ITask from "@/src/types/ITask";
-import Task from "./Task";
+import PublicTask from "./PublicTask";
 
 const fetchTasks = async () => {
   try {
     const res = await fetch(`http://localhost:3000/api/v1/tasks`, {
-      cache: "no-store",
+      cache: "no-cache",
     });
 
     const tasks = await res.json();
@@ -21,7 +21,7 @@ const PrivateTaskList = async () => {
     <div className="mt-8">
       {tasks.length === 0 ? (
         <h1 className="text-4xl text-center tracking-wider">
-          You don't have any tasks yet.
+          You don&apos;t have any tasks yet.
         </h1>
       ) : (
         <>
@@ -30,7 +30,7 @@ const PrivateTaskList = async () => {
           </h1>
           <ul className="flex flex-col gap-4 mt-8">
             {tasks.map((task) => (
-              <Task params={{ task }} key={task._id} />
+              <PublicTask params={{ task }} key={task._id} />
             ))}
           </ul>
         </>

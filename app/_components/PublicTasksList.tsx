@@ -1,5 +1,5 @@
 import ITask from "@/src/types/ITask";
-import Task from "./Task";
+import PublicTask from "./PublicTask";
 
 const fetchTasks = async () => {
   try {
@@ -36,7 +36,7 @@ const PublicTaskList = async () => {
           </h1>
           <ul className="flex flex-col gap-4 mt-8">
             {tasks.map((task) => (
-              <Task params={{ task }} key={task._id} />
+              <PublicTask params={{ task }} key={task._id} />
             ))}
           </ul>
         </>

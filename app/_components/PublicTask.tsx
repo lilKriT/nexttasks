@@ -7,7 +7,8 @@ import {
   AiOutlineCheck,
   AiOutlineClose,
 } from "react-icons/ai";
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import AuthorInfo from "./AuthorInfo";
 
 const deleteTask = async (id: string) => {
   try {
@@ -19,6 +20,7 @@ const deleteTask = async (id: string) => {
   }
 };
 
+// TODO: merge those two methods
 const checkTask = async (id: string, checked: boolean) => {
   try {
     // console.log(`Checking task: ${id}. Now it's ${checked}`)
@@ -48,16 +50,34 @@ const editTask = async (id: string, title: string) => {
   }
 };
 
-const Task = ({ params: { task } }: { params: { task: ITask } }) => {
+const PublicTask = ({ params: { task } }: { params: { task: ITask } }) => {
   const [editing, setEditing] = useState(false);
   const [title, setTitle] = useState(task.title);
-  const router = useRouter();
+  const [authorName, setAuthorName] = useState("...loading");
+  // const router = useRouter();
+  const [isAuthorLoading, setIsAuthorLoading] = useState(true);
+
+  useEffect(() => {
+    setIsAuthorLoading(true);
+    const getAuthor = async () => {
+      const res = await fetch(
+        `http://localhost:3000/api/v1/users/${task.author}`
+      );
+      const data = await res.json();
+      setAuthorName(data.login);
+    };
+    getAuthor();
+    setIsAuthorLoading(false);
+  }, []);
 
   return (
     <li className="taskCard gap-4">
       {/* Left field */}
       {!editing ? (
-        <p className="text-lg">{task.title}</p>
+        <div className="flex justify-between items-center grow">
+          <p className="text-lg">{task.title}</p>
+          <span>{authorName}</span>
+        </div>
       ) : (
         <input
           type="text"
@@ -77,7 +97,7 @@ const Task = ({ params: { task } }: { params: { task: ITask } }) => {
               defaultChecked={task.completed}
               onChange={(e) => {
                 checkTask(task._id, e.target.checked);
-                router.refresh();
+                // router.refresh();
               }}
             />
             <button
@@ -89,9 +109,9 @@ const Task = ({ params: { task } }: { params: { task: ITask } }) => {
               <AiFillEdit />
             </button>
             <button
-              onClick={async () => {
-                await deleteTask(task._id);
-                router.refresh();
+              onClick={() => {
+                deleteTask(task._id);
+                // router.refresh();
               }}
               className="btn btn--small btn--danger"
             >
@@ -103,7 +123,7 @@ const Task = ({ params: { task } }: { params: { task: ITask } }) => {
             <button
               onClick={() => {
                 editTask(task._id, title);
-                router.refresh();
+                // router.refresh();
                 setEditing(false);
               }}
               className="btn btn--small btn--primary"
@@ -126,5 +146,5 @@ const Task = ({ params: { task } }: { params: { task: ITask } }) => {
   );
 };
 
-export default Task;
+export default PublicTask;
 // I noticed that after opening and closing edit, it shows the right title.
