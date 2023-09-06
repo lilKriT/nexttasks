@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useEffect, useState } from "react";
 import IUser from "../types/IUser";
+import { setTimeout } from "timers";
 
 // Very simple context
 export const AuthProvider = createContext<{

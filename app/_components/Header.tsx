@@ -54,10 +54,13 @@ const Header = () => {
                 onClick={async () => {
                   await logoutUser();
                   context.setUser(null);
+                  router.refresh();
                   router.push("/");
                 }}
                 className="btn btn--primary"
-              >{`Log out`}</button>
+              >
+                Log out
+              </button>
             )}
           </li>
         </menu>
